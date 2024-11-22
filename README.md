@@ -38,18 +38,82 @@ Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
 
+FULL ADDER:
+
+![image](https://github.com/user-attachments/assets/9be62378-5629-4f53-9e7a-79b8963392d2)
+
+FULL SUBTRACTOR:
+
+![image](https://github.com/user-attachments/assets/73e97843-3ff9-4608-a850-06d5ec707c06)
+
+
 **Procedure**
 
 Write the detailed procedure here
+```
+**Full Adder:**
+1.Open Quartus II and create a new project.
+2.Use schematic design entry to draw the full adder circuit. 
+3.The circuit consists of XOR, AND, and OR gates. 
+4.Compile the design, verify its functionality through simulation. 
+5.Implement the design on the target device and program it.
+
+**Full Subtractor:** 
+1.Follow the same steps as for the full adder. 
+2.Draw the full subtractor circuit using schematic design. 
+3.The circuit includes XOR, AND, OR gates to perform subtraction. 
+4.Compile, simulate, implement, and program the design similarly to the full adder.
+```
 
 **Program:**
-
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+```
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. 
+Developed by: TITUS RATNA KUMAR KARIVELLA 
+RegisterNumber: 24002273
 */
+```
+```
 
+## Full_adder
+module fulladd_top(a,b,cin,sum,carry);
+input a,b,cin;
+output sum,carry;
+wire w1,w2,w3,w4;       
+xor(w1,a,b);
+xor(sum,w1,cin);        
+
+and(w2,a,b);
+and(w3,b,cin);
+and(w4,cin,a);
+
+or(carry,w2,w3,w4);
+endmodule 
+
+## Full_subtractor
+module fullsub_top(a,b,Bin,BO,DIFF);
+input a,b,Bin;
+output BO,DIFF;
+assign DIFF = a ^ b ^ Bin;
+  assign BO = (a & b) | ((a ^ b) & Bin);
+endmodule
+
+```
 **RTL Schematic**
 
+![image](https://github.com/user-attachments/assets/2bebe1e8-3b40-4342-9709-ee4085485a72)
+
+
 **Output Timing Waveform**
+
+FULL ADDER
+
+![image](https://github.com/user-attachments/assets/0c0a2a86-42ce-43ec-aa4c-f7a71f7386c5)
+
+FULL SUBTRACTOR
+
+![image](https://github.com/user-attachments/assets/b5ed78f6-4045-4157-b40f-bb23f680bae9)
+
+
 
 **Result:**
 
